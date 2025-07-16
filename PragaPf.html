@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pragatheswaran M | Portfolio</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- AOS Animation CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+ <style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    position: relative;
+    background-color: #000000; /* Deep space color */
+    color: #ffffff;
+  }
+
+  .typewriter::after {
+    content: '|';
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .achievements-wrapper:hover .achv-images {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .achievements-wrapper:hover .achv-box {
+    transform: translateX(-60px);
+  }
+
+  .achv-images {
+    transition: all 0.5s ease;
+  }
+
+  .achv-box {
+    transition: all 0.5s ease;
+  }
+  /* Glow effect on glass cards */
+
+  .glass-card {
+    background: rgba(184, 141, 240, 0.478);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 20px;
+    border: 1px solid rgba(180, 131, 244, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .glass-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 10px #cac4cf, 0 0 20px #746088, 0 0 30px #472963;
+  }
+    .glow-ring {
+  background: radial-gradient(circle, rgba(11, 11, 11, 0.6) 30%, transparent 80%);
+  box-shadow:
+    0 0 40px rgba(255, 255, 255, 0.878),
+    0 0 60px rgba(113, 92, 134, 0.878),
+    0 0 80px rgba(65, 39, 90, 0.878),
+    0 0 100px rgb(33, 15, 0.872);
+
+  z-index: 0;
+}
+@keyframes pulse-glow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+.glow-ring {
+  animation: pulse-glow 3s infinite ease-in-out;
+}
+
+
+</style>
+
+</head>
+
+<body>
+  <!-- Scroll Progress Bar -->
+<div id="scroll-bar" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 z-[9999]"
+ style="width: 0%;"></div>
+
+  <nav class="fixed top-0 w-full z-50 backdrop-blur-md bg-black/40 border-b border-indigo-500 text-white shadow-md">
+  <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+    <h1 class="text-xl font-bold tracking-widest">PRAGZ</h1>
+    <div class="space-x-6 text-sm font-semibold">
+    
+      <a href="#" class="hover:text-indigo-300">Home</a>
+      <a href="#projects" class="hover:text-indigo-300">Projects</a>
+      <a href="#contact" class="hover:text-indigo-300">Contact</a>
+      <a href="resume.pdf" download class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-1 rounded-full transition duration-300 shadow-md">Download Resume</a>
+    </div>
+  </div>
+</nav>
+
+
+ <!-- Hero Section -->
+<section class="pt-24 relative h-screen flex flex-col justify-center items-center text-center px-4 z-10 bg-cover bg-center" style="background-image: url('bg.jpg');">
+  <div class="absolute inset-0 bg-gradient-to-br from-indigo-800/40 via-purple-800/30 to-transparent animate-gradientBlur z-0 rounded-xl"></div>
+
+  <!-- Profile Image -->
+  <img src="praga.jpg" alt="Profile" class="w-40 h-40 rounded-full border-4 border-white shadow-lg mb-4 z-10" />
+
+  <!-- Name -->
+  <h1 class="text-5xl md:text-6xl font-extrabold text-white drop-shadow-md z-10">Pragatheswaran M</h1>
+
+  <!-- Typewriter Tagline -->
+  <p id="typewriter" class="text-xl text-indigo-200 mt-4 typewriter z-10 font-bold"></p>
+<a href="#about">
+  <!-- Scroll Down Arrow -->
+  <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce z-20 cursor-pointer glow-ring">
+    <svg class="w-8 h-8  text-white opacity-80" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+    </svg>
+  </div>
+</a>
+</section>
+
+  <!-- Typewriter JS -->
+  <script>
+    const texts = [
+      "B.E. Biomedical Engineering 🩺",
+      "Tech Enthusiast 🩺",
+      "Embedded Systems Innovator 🛠️",
+      "Passionate Problem Solver 💡"
+    ];
+    let count = 0, index = 0, currentText = '', letter = '';
+
+    function type() {
+      if (count === texts.length) count = 0;
+      currentText = texts[count];
+
+      if (index < currentText.length) {
+        letter += currentText.charAt(index);
+        document.getElementById("typewriter").innerText = letter;
+        index++;
+        setTimeout(type, 100);
+      } else {
+        setTimeout(erase, 1500);
+      }
+    }
+
+    function erase() {
+      if (index > 0) {
+        letter = currentText.substring(0, index - 1);
+        document.getElementById("typewriter").innerText = letter;
+        index--;
+        setTimeout(erase, 50);
+      } else {
+        count++;
+        setTimeout(type, 500);
+      }
+    }
+
+    window.onload = type;
+
+   function openImageModal(src, desc) {
+  document.getElementById("modalImage").src = src;
+  document.getElementById("modalDesc").innerText = desc;
+  document.getElementById("imageModal").classList.remove("hidden");
+  document.getElementById("imageModal").classList.add("flex");
+}
+
+function closeModal() {
+  document.getElementById("imageModal").classList.remove("flex");
+  document.getElementById("imageModal").classList.add("hidden");
+}
+
+</script>
+<!-- About + Skills + Education Section -->
+<section id="about" class="py-20 px-6 max-w-7xl mx-auto relative z-10">
+  <div class="grid md:grid-cols-2 gap-10">
+
+    <!-- Left Side: About + Education -->
+    <div class="flex flex-col space-y-10">
+      <!-- About -->
+      <div class="glass-card bg-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300" data-aos="fade-right">
+        <h2 class="text-3xl font-bold text-indigo-300 mb-4">About Me 📄</h2>
+        <p class="text-gray-200 leading-relaxed">
+          I’m a final-year Biomedical Engineering student passionate about merging technology with healthcare.
+          I focus on medical devices, AI, and embedded systems to develop meaningful, real-world solutions.
+        </p>
+      </div>
+
+      <!-- Education -->
+      <div data-aos="fade-left" class="flex-1">
+        <h3 class="text-3xl font-bold mb-8 text-indigo-400">Education Journey 📚</h3>
+        <div class="relative border-l-4 border-indigo-400 ml-4 space-y-16">
+          <!-- Higher Secondary -->
+        <div class="relative pl-10">
+          <div class="absolute -left-10 top-0 bg-indigo-500 rounded-full w-10 h-10 flex items-center justify-center text-white shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422A12.083 12.083 0 0118 21h-3m-3 0H6a12.083 12.083 0 01-0.16-10.422L12 14z" />
+            </svg>
+          </div>
+          <h4 class="text-xl font-semibold text-indigo-300">Higher Secondary School</h4>
+          <p class="mt-1 text-gray-300">AVP Trust National Metric Hr. Sec. School</p>
+          <p class="mt-1 text-gray-300">Percentage: <strong>87%</strong></p>
+          <p class="mt-1 italic text-gray-400">Completed in 2022</p>
+          <p class="mt-2 text-gray-400 max-w-xl">Focused on Science stream with excellent results. Participated in science fairs and activities.</p>
+        </div>
+
+        <!-- Secondary -->
+        <div class="relative pl-10">
+          <div class="absolute -left-10 top-0 bg-indigo-600 rounded-full w-10 h-10 flex items-center justify-center text-white shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 20h9" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 20h3M12 4v16M6 4h12M6 20h12" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 4a2 2 0 012-2h8a2 2 0 012 2v16a2 2 0 01-2 2H8a2 2 0 01-2-2V4z" />
+            </svg>
+          </div>
+          <h4 class="text-xl font-semibold text-indigo-300">Secondary School</h4>
+          <p class="mt-1 text-gray-300">AVP Trust National Metric Hr. Sec. School</p>
+          <p class="mt-1 text-gray-300">Percentage: <strong>80%</strong></p>
+          <p class="mt-1 italic text-gray-400">Completed in 2020</p>
+          <p class="mt-2 text-gray-400 max-w-xl">Strong in Mathematics and English. Member of debate club and active in competitions.</p>
+        </div>
+
+      </div>
+
+      </div>
+    </div>
+
+
+
+    <!-- Right Side: 2x2 Grid for Skills, Tools, Interests, Additional Skills -->
+    <div class="grid grid-cols-2 gap-6 h-full">
+      <!-- Skills -->
+      <div class="glass-card" data-aos="fade-right">
+        <h3 class="text-2xl font-bold text-indigo-300 mb-3">Skills ⚖️</h3>
+        <ul class="list-disc ml-6 space-y-2 text-gray-300">
+          <li>C, Embedded C</li>
+          <li>Python (Basics)</li>
+          <li>HTML, CSS</li>
+          <li>PCB Design</li>
+        </ul>
+      </div>
+
+     <!-- Tools -->
+<div class="glass-card bg-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300" data-aos="fade-left" data-aos-delay="100">
+  <h3 class="text-2xl font-bold text-indigo-300 mb-3">Tools 🔬</h3>
+  <ul class="list-disc ml-6 space-y-2 text-gray-300">
+    <li>Arduino IDE</li>
+    <li>Proteus</li>
+    <li>Diptrace</li>
+    <li>KiCad</li>
+    <li>MS Office</li>
+  </ul>
+</div>
+
+
+      <!-- Area of Interest -->
+      <div class="glass-card bg-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300" data-aos="fade-right" data-aos-delay="100">
+        <h3 class="text-2xl font-bold text-indigo-300 mb-3">Area of Interest 🧑🏻‍💻</h3>
+        <ul class="list-disc ml-6 space-y-2 text-gray-300">
+          <li>Embedded Systems</li>
+          <li>Medical Devices</li>
+          <li>PCB Designing</li>
+          <li>Human Anatomy</li>
+        </ul>
+      </div>
+
+      <!-- Additional Skills -->
+      <div class="glass-card" data-aos="fade-left" data-aos-delay="100">
+        <h3 class="text-2xl font-bold text-indigo-300 mb-3">Additional Skills 💪🏻</h3>
+        <ul class="list-disc ml-6 space-y-2 text-gray-300">
+          <li>Communication</li>
+          <li>Teamwork</li>
+          <li>Problem Solving</li>
+          <li>Leadership</li>
+          <li>Critical Thinking</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+ 
+<!-- Projects Section -->
+<section id="projects" class="max-w-7xl mx-auto relative z-10 fade-down">
+  <h2 class="text-4xl font-bold text-indigo-300 text-center mb-12" data-aos="fade-up">Projects 💡</h2>
+
+  <!-- 2-Column Grid: Left for Projects, Right for Images -->
+   <div class="flex justify-center items-center min-h-screen">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 fade-up">
+
+<!-- Left Grid: Project Cards in 2x3 format -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+  <!-- Project 1 -->
+  <div class="glass-card bg-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300" data-aos="zoom-in">
+    <h3 class="text-2xl font-bold text-indigo-200 mb-2">Health Monitoring System</h3>
+    <ul class="list-disc ml-5 text-gray-300 text-sm space-y-1">
+      <li>SpO2, Heart Rate & Temp Monitoring</li>
+      <li>OLED display + Cloud sync</li>
+      <li>Custom PCB layout</li>
+    </ul>
+  </div>
+
+  <!-- Project 2 -->
+  <div class="glass-card" data-aos="zoom-in" data-aos-delay="100">
+    <h3 class="text-2xl font-bold text-indigo-200 mb-2">Automated BVM Ventilator</h3>
+    <ul class="list-disc ml-5 text-gray-300 text-sm space-y-1">
+      <li>Arduino with rack & pinion control</li>
+      <li>Adjustable pressure & rate</li>
+      <li>Designed for low-resource settings</li>
+    </ul>
+  </div>
+
+  <!-- Project 3 -->
+  <div class="glass-card" data-aos="zoom-in" data-aos-delay="200">
+    <h3 class="text-2xl font-bold text-indigo-200 mb-2">Smart Wristband + Ventilator</h3>
+    <ul class="list-disc ml-5 text-gray-300 text-sm space-y-1">
+      <li>Heart rate-triggered oxygen delivery</li>
+      <li>Wireless control of ventilator</li>
+      <li>Compact wearable form</li>
+    </ul>
+  </div>
+
+  <!-- Project 4 -->
+  <div class="glass-card bg-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300" data-aos="zoom-in" data-aos-delay="300">
+    <h3 class="text-2xl font-bold text-indigo-200 mb-2">Waste Segregation System</h3>
+    <ul class="list-disc ml-5 text-gray-300 text-sm space-y-1">
+      <li>AI for waste type detection</li>
+      <li>Stepper motor for auto-sorting</li>
+      <li>Improves recycling rate</li>
+    </ul>
+  </div>
+
+  <!-- Project 5 (Full Width) -->
+  <div class="glass-card bg-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300" data-aos="zoom-in" data-aos-delay="300">
+    <h3 class="text-2xl font-bold text-indigo-200 mb-2">PharmaLingo</h3>
+    <ul class="list-disc ml-5 text-gray-300 text-sm space-y-1">
+      <li>ML-based handwritten prescription reader</li>
+      <li>User-friendly UI with drug info</li>
+      <li>Reduces errors in dispensing</li>
+    </ul>
+  </div>
+</div>
+
+    <!-- Right Grid: 3x3 Images -->
+<!-- Right Grid: 3x4 Images -->
+<div class="grid grid-cols-3 gap-4" data-aos="fade-left">
+  <img src="p1.jpg" alt="Project Img 1" class="w-full h-28 object-cover rounded-lg shadow-md cursor-pointer"
+       onclick="openImageModal('p1.jpg', ' This is the AUTOMATED BVM VENTILATOR that helps patients breathe more easily by providing controlled ventilation. This system calculates the optimal pressure and volume for each patient with the help of Smart Wristband technology that measures the vital parameters like SpO2 level, Heart Rate, BPM, Temperature of the patients.Its is also integrated with an alert system that sends notification to the doctor and the nearby emergency care servies provide in case of any emergency')"/>
+  <img src="p2.jpg" alt="Project Img 2" class="w-full h-28 object-cover rounded-lg shadow-md cursor-pointer"
+       onclick="openImageModal('p2.jpg', 'This is a FIRE FOLLOWING ROBOT which identifies and extinguishes fires with water in real-time using a flame sensor.It also has  alert system that sends notification to the user')"/>
+  <img src="p3.jpg" alt="Project Img 3" class="w-full h-28 object-cover rounded-lg shadow-md cursor-pointer"
+       onclick="openImageModal('p3.jpg', 'It is the miniature of Smart Wrist Watch that monitor the  vital parameter of an individual wchich includes Heart Rate, BPM, SpO2,Temperature. it also calculates the movement of the person with the help of accelerometer.It is a basic health monitoring device')"/>
+  <img src="p4.png" alt="Project Img 4" class="w-full h-28 object-cover rounded-lg shadow-md cursor-pointer"
+       onclick="openImageModal('p4.png', ' I designed the layout of PCB for the health monitoring device that uses smd components and double layer')" />
+  <img src="p5.jpg" alt="Project Img 5" class="w-full h-28 object-cover rounded-lg shadow-md cursor-pointer"
+       onclick="openImageModal('p5.jpg', ' This is the image of me working for the project  Automated BVM Ventilator to take part in the BIT Hackathon 2024 ')" />
+  <img src="p6.jpg" alt="Project Img 6" class="w-full h-28 object-cover rounded-lg shadow-md cursor-pointer"
+       onclick="openImageModal('p6.jpg', 'This is the image that remains  me and my friends as it was the First ever Hackathon Event that we have attended aftter joining the college ')" />
+  <img src="p7.jpg" alt="Project Img 7" class="w-full h-28 object-cover rounded-lg shadow-md cursor-pointer"
+       onclick="openImageModal('p7.jpg', 'Me and my friends exclaimed with joy that we  too became a hacker ad these ID cardsare the only eveidence of it at the hackathon')"/>
+  <img src="p8.jpg" alt="Project Img 8" class="w-full h-28 object-cover rounded-lg shadow-md cursor-pointer"
+       onclick="openImageModal('p8.jpg', 'This was the images taken at the PEC hackathon 2024 held at PANIMALAR ENGINEERING COLLEGE, CHENNAI  on 28th Jan.This image has a best memories as me and my teammates was so eager about participating in the hackathon and showcasing our project.')"/>
+  <img src="p9.jpg" alt="Project Img 9" class="w-full h-28 object-cover rounded-lg shadow-md cursor-pointer"
+       onclick="openImageModal('p9.jpg', 'My 1st Project - It is The Health monitoring System that uses a combination of sensors to track vital signs like Heart Rate, BPM, SpO2,Acceleration, Flex and Temperature and provide real-time feedback to users with the help of IOT. We took this project to the Hindustha Engineering College Paperpresentation 2023 under the topic of IOT')" />
+  <img src="p10.jpg" alt="Project Img 10" class="w-full h-28 object-cover rounded-lg shadow-md cursor-pointer"
+       onclick="openImageModal('p10.jpg', 'This image always has a special place in my heart and also a special memory as I learnt to connect the entire electrical connection required for a house. It involved in assembling of the electrical appliances and devices in a systematic manner.')" />
+  <img src="p11.png" alt="Project Img 11" class="w-full h-28 object-cover rounded-lg shadow-md cursor-pointer"
+       onclick="openImageModal('p11.png', 'Learning never exhausts the mind. Recently I learnt to use Altium Software to design PCB layouts. Even though I already had some experience with PCB design (Diptrace,KiCad), this was my first time using Altium and I found it to be a powerful tool for creating complex layouts. This is my first Altium design for a line follower robot')" />
+  <img src="p12.jpg" alt="Project Img 12" class="w-full h-28 object-cover rounded-lg shadow-md cursor-pointer"
+       onclick="openImageModal('p12.jpg', 'A mini project that  demonstrates the working of the Automated Waste Segregation System. This image has the working Prototype of the system which automatically segregates the waste into different partition based on its type.')"/>
+  <img src="p13.jpg" alt="Project Img 13" class="w-full h-28 object-cover rounded-lg shadow-md cursor-pointer"
+       onclick="openImageModal('p13.jpg', 'This image consists of me and my teammates explaining our AUTOMATED BVM VENTILATOR project in the BIT Hackathon 2024')" />
+  <img src="p14.jpg" alt="Project Img 14" class="w-full h-28 object-cover rounded-lg shadow-md cursor-pointer"
+       onclick="openImageModal('p14.jpg', 'This is an image of the Smart wrist band connection that is used for the working of the Automated BVM Ventilator. This system collects the important parameters of the patients for the working of teh ventilator. This system the also consists of various sensors and modules to ensure accurate monitoring and control of the ventilator.')"/>
+  <img src="p15.png" alt="Project Img 15" class="w-full h-28 object-cover rounded-lg shadow-md cursor-pointer"
+       onclick="openImageModal('p15.', 'this is a schematic circuit design which is teh previous stage of PCB layout design. All the required components are placed on the PCB layout and connected with traces to create a functional circuit. This design is crucial for the successful implementation of the  PCB Board of the project.here the schematic circuit represents a Smart Watch circuit that uses sensor to collect the important data from the patients.')"/>
+      </div>
+
+
+  </div>
+</section>
+
+<!-- Fullscreen Image Modal Script -->
+<script>
+  function openFullscreen(src) {
+    const modal = document.createElement('div');
+    modal.className = 'fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-[9999]';
+    modal.innerHTML = `
+      <img src="${src}" class="max-w-full max-h-full rounded-lg shadow-xl">
+      <button onclick="this.parentElement.remove()" class="absolute top-5 right-5 text-white text-4xl">&times;</button>
+    `;
+    document.body.appendChild(modal);
+  }
+</script>
+<!-- Online Projects Section -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<section id="projects" class="py-20 px-6 mx-auto relative z-10 fade-up">
+  <h2 class="text-4xl font-bold text-indigo-300 text-center mb-12 " data-aos="fade-up"> OngoingProjects</h2>
+
+     <!-- Ongoing Project  -->
+    <div class="glass-card fade-down" data-aos="zoom-in" data-aos-delay="100">
+      <div>
+         <h3 class="text-2xl font-bold text-indigo-200 mb-2">Aura Band</h3>
+      <p class="text-gray-300 mb-2">A mental health wearable that detects stress and provides feedback:</p>
+        <ul class="list-disc ml-6 text-gray-400">
+          <li>Monitors heart rate variability and skin resistance</li>
+          <li>OLED display and mobile interface for alerts</li>
+          <li>ESP32-based system with compact form factor</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Achievements Section -->
+<section class="py-20 px-6 max-w-7xl mx-auto relative z-10"> <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 transition-all duration-300" data-aos="zoom-in" data-aos-delay="100">
+  <h2 class="text-4xl font-bold text-indigo-300 text-center mb-12" data-aos="fade-up">Achievements ✨</h2>
+
+  <div class="flex flex-col lg:flex-row gap-8 items-stretch">
+
+    <!-- Achievements Box -->
+    <div class="glass-card" data-aos="fade-right">
+        <ul class="list-disc ml-6 space-y-3 text-gray-200 text-base leading-relaxed">
+        <li><strong>Brown Belt in Karate (Kumite)</strong> - 2017</li>
+        <li><strong>Represented in Tamil Nadu Men’s Handball Team</strong> as Goalkeeper <strong> TWICE</strong> – SGFI (2018, 2019)</li>
+        <li><strong>Bronze Medal</strong> – in State-Level Handball held at Madurai (2020)</li>
+        <li><strong>Best Goalkeeper</strong> Special appreciation award in 2nd State level Handball Championship held at Erode Sengunthar Engineering  College , Thudupathi (2022)</li>
+        <li><strong>U-19 State Championship</strong> – Represented Erode team as Goalkeeper (2024)</li>
+        <li><strong>CM Trophy</strong> – Represented Erode team as Goalkeeper at NIT Trichy (2024)</li>
+        <li><strong>Special Award</strong> – in behalf of Sportsmanship, Discipline, Punctuality in the BIT Summer Camp (2024)</li>
+        <li><strong>Innovating Tech in Medical field </strong> – in the IOT domain Paperpresentation at Hindusthan College of Engineering and Technology (2023)</li>
+       </ul>
+    </div>
+    <!-- Achievements Images -->
+<div class="relative w-full h-[600px] overflow-hidden">
+  <div class="absolute top-0 left-0 w-full animate-vert-loop flex flex-col gap-4">
+    <div class="grid grid-cols-3 gap-4">
+  <img src="cup.jpg" alt="Achievement 1" class="w-40 h-28 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('cup.jpg', 'Teamwork made the dream work- Fought among 21 teams of COIMBATORE, ERODE, TIRUPUR, NILGIRIES and banged 4th position in the CENTIES Mens Handball Chanpionship - 2025')" />
+  <img src="2.jpg" alt="Achievement 2" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('2.jpg', 'Proud to show you the Current Mens Handball Team of the Bannari Amman Intitute who positioned the 4th Position among the top 25 in COIMBATORE,TIRUPUR,ERODE,NILGIRIES districts-CENTIES 2025 at Erode Sengunthar Engineering College ')" />
+  <img src="3.jpg" alt="Achievement 3" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('3.jpg', 'Participated in the BIT Summer Camp 2024 and honored as the Best Camper along with the Trophy 🏆 as a result of showcasing the Discipline,Punctuality,Sportsmanship,Leadership')" />
+  <img src="4.jpg" alt="Achievement 4" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('4.jpg', 'Fought every point like a warrior – Intercollege BIT Sports Fest Tournament 2023 🔥, where each year students fight for their team to bang the top two position in the college')" />
+  <img src="5.jpg" alt="Achievement 5" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('5.jpg', 'Represented my college in the Zone-12 Mens Handball Tournament 2024 – Unmatched energy on the court! 🏃‍♂️💥')" />
+  <img src="6.jpg" alt="Achievement 6" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('6.jpg', 'Positioned 2nd place in the Anna University ZONE 12 Handball Tournament 2023')" />
+  <img src="7.jpg" alt="Achievement 7" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('7.jpg', 'Selected as the GOALKEEPER of the ERODE district to represent the Erode team in the CHIEF MINISTER TROPHY 2024 at the NIT Sports Complex, Trichy')" />
+  <img src="8.jpg" alt="Achievement 8" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('8.jpg', 'selected as the Finalist for the PANIMALAR HACKATHON 2024 held on 27th Jan,2024 at the Panimalar Engineering College , Chennai')" />
+  <img src="9.png" alt="Achievement 9" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('9.png', 'this is the picture which was taken by the news Dhinamalar photographer at the CHIEF MINISTER TROPHY 2024,   when i was playing a neck to neck match with the Salem team')" />
+  <img src="10.jpg" alt="Achievement 10" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('10.jpg', 'This was memoy that I had My first ever Experience and Match in the indoor Handball Court of NIT Sports Complex, Trichy ')" />
+  <img src="15.jpg" alt="Achievement 11" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('15.jpg', 'Selected for the Under 19 State Championship – Erode Team as  a GOALKEEPER to play in the state match held at GOVERNMENT LAW COLLEGE, Veerapandi , Theni, 2024')" />
+  <img src="11.jpg" alt="Achievement 12" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('11.jpg', 'Selected for the Senior State Mens Handball Championship held at GOVERNMENT HIGHER SECONDARY SCHOOL, Mettur,Salem 2024')" />
+  <img src="12.jpg" alt="Achievement 13" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('12.jpg', 'Participated in the Inter- District Handball Championship 2024 organized by the Erode District Handball Association at the Hindusthan College of Arts and Science, Erode')" />
+  <img src="13.png" alt="Achievement 14" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('13.png', 'The proud moment as a Team Caption to introduce BIT Mens Handball Team in the Team Recognition to the Head of the Physical Education Department of the Erode Sengunthar Engineering College')" />
+  <img src="1.jpg" alt="Achievement 15" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('1.jpg', 'Special appreciation Award in the BIT Summer Camp ,2023 to Honor my Sportsmanship and Dedication')" />
+  <img src="14.jpg" alt="Achievement 16" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('14.jpg', 'Participated in the Erode district Athletic Meet, 2024 held at VOC Athletic Field & Sports Complex , Erode')" />
+  <img src="16.jpg" alt="Achievement 17" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('16.jpg', 'Took part in the BIT, Marathon 2024 and completed in the 21 kilometer of distence in just  1hr 47mins and finished the race in the 7th position among 87 participants')" />
+  <img src="17.png" alt="Achievement 18" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('17.png', 'This is the moment when our Erode Mens Handball team distributed the team jersey in the State Championship, Mettur, Salem')" />
+  <img src="18.jpg" alt="Achievement 19" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('18.jpg', 'This certificate is the proof of the participation in the CENTIES - 2023 and banging 4th position among 18 teams , held KPR Engineering College, Coimbatore')" />
+  <img src="19.jpg" alt="Achievement 20" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('19.jpg', 'This image remembers the moment of entering the Sports Development Authority of TamilNadu(SDAT), Trichi')" />
+  <img src="20.jpg" alt="Achievement 21" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('20.jpg', 'This was the moment I entered into the NIT Sports Complex, Trichy to take part in the CHIEF MINISTER TROPHY 2024')" />
+  <img src="21.jpg" alt="Achievement 22" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('21.jpg', 'This moment is when I attended the Junior National Championship and got selected for the team, held at Kongu College of arts and science , Erode')" />
+  <img src="22.jpg" alt="Achievement 23" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('22.jpg', 'The First Trophy for me and my team under My Captaincy in  the Anna University Mens Handball Zonal Tournament-2024')" />
+  <img src="cup.jpg" alt="Achievement 1" class="w-40 h-28 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('cup.jpg', 'Teamwork made the dream work- Fought among 21 teams of COIMBATORE, ERODE, TIRUPUR, NILGIRIES and banged 4th position in the CENTIES Mens Handball Chanpionship - 2025')" />
+  <img src="2.jpg" alt="Achievement 2" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('2.jpg', 'Proud to show you the Current Mens Handball Team of the Bannari Amman Intitute who positioned the 4th Position among the top 25 in COIMBATORE,TIRUPUR,ERODE,NILGIRIES districts-CENTIES 2025 at Erode Sengunthar Engineering College ')" />
+  <img src="3.jpg" alt="Achievement 3" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('3.jpg', 'Participated in the BIT Summer Camp 2024 and honored as the Best Camper along with the Trophy 🏆 as a result of showcasing the Discipline,Punctuality,Sportsmanship,Leadership')" />
+  <img src="4.jpg" alt="Achievement 4" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('4.jpg', 'Fought every point like a warrior – Intercollege BIT Sports Fest Tournament 2023 🔥, where each year students fight for their team to bang the top two position in the college')" />
+  <img src="5.jpg" alt="Achievement 5" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('5.jpg', 'Represented my college in the Zone-12 Mens Handball Tournament 2024 – Unmatched energy on the court! 🏃‍♂️💥')" />
+  <img src="6.jpg" alt="Achievement 6" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('6.jpg', 'Positioned 2nd place in the Anna University ZONE 12 Handball Tournament 2023')" />
+  <img src="7.jpg" alt="Achievement 7" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('7.jpg', 'Selected as the GOALKEEPER of the ERODE district to represent the Erode team in the CHIEF MINISTER TROPHY 2024 at the NIT Sports Complex, Trichy')" />
+  <img src="8.jpg" alt="Achievement 8" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('8.jpg', 'selected as the Finalist for the PANIMALAR HACKATHON 2024 held on 27th Jan,2024 at the Panimalar Engineering College , Chennai')" />
+  <img src="9.png" alt="Achievement 9" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('9.png', 'this is the picture which was taken by the news Dhinamalar photographer at the CHIEF MINISTER TROPHY 2024,   when i was playing a neck to neck match with the Salem team')" />
+  <img src="10.jpg" alt="Achievement 10" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('10.jpg', 'This was memoy that I had My first ever Experience and Match in the indoor Handball Court of NIT Sports Complex, Trichy ')" />
+  <img src="15.jpg" alt="Achievement 11" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('15.jpg', 'Selected for the Under 19 State Championship – Erode Team as  a GOALKEEPER to play in the state match held at GOVERNMENT LAW COLLEGE, Veerapandi , Theni, 2024')" />
+  <img src="11.jpg" alt="Achievement 12" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('11.jpg', 'Selected for the Senior State Mens Handball Championship held at GOVERNMENT HIGHER SECONDARY SCHOOL, Mettur,Salem 2024')" />
+  <img src="12.jpg" alt="Achievement 13" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('12.jpg', 'Participated in the Inter- District Handball Championship 2024 organized by the Erode District Handball Association at the Hindusthan College of Arts and Science, Erode')" />
+  <img src="13.png" alt="Achievement 14" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('13.png', 'The proud moment as a Team Caption to introduce BIT Mens Handball Team in the Team Recognition to the Head of the Physical Education Department of the Erode Sengunthar Engineering College')" />
+  <img src="1.jpg" alt="Achievement 15" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('1.jpg', 'Special appreciation Award in the BIT Summer Camp ,2023 to Honor my Sportsmanship and Dedication')" />
+  <img src="14.jpg" alt="Achievement 16" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('14.jpg', 'Participated in the Erode district Athletic Meet, 2024 held at VOC Athletic Field & Sports Complex , Erode')" />
+  <img src="16.jpg" alt="Achievement 17" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('16.jpg', 'Took part in the BIT, Marathon 2024 and completed in the 21 kilometer of distence in just  1hr 47mins and finished the race in the 7th position among 87 participants')" />
+  <img src="17.png" alt="Achievement 18" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('17.png', 'This is the moment when our Erode Mens Handball team distributed the team jersey in the State Championship, Mettur, Salem')" />
+  <img src="18.jpg" alt="Achievement 19" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('18.jpg', 'This certificate is the proof of the participation in the CENTIES - 2023 and banging 4th position among 18 teams , held KPR Engineering College, Coimbatore')" />
+  <img src="19.jpg" alt="Achievement 20" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('19.jpg', 'This image remembers the moment of entering the Sports Development Authority of TamilNadu(SDAT), Trichi')" />
+  <img src="20.jpg" alt="Achievement 21" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('20.jpg', 'This was the moment I entered into the NIT Sports Complex, Trichy to take part in the CHIEF MINISTER TROPHY 2024')" />
+  <img src="21.jpg" alt="Achievement 22" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('21.jpg', 'This moment is when I attended the Junior National Championship and got selected for the team, held at Kongu College of arts and science , Erode')" />
+  <img src="22.jpg" alt="Achievement 23" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('22.jpg', 'The First Trophy for me and my team under My Captaincy in  the Anna University Mens Handball Zonal Tournament-2024')" />
+  <img src="cup.jpg" alt="Achievement 1" class="w-40 h-28 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('cup.jpg', 'Teamwork made the dream work- Fought among 21 teams of COIMBATORE, ERODE, TIRUPUR, NILGIRIES and banged 4th position in the CENTIES Mens Handball Chanpionship - 2025')" />
+  <img src="2.jpg" alt="Achievement 2" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('2.jpg', 'Proud to show you the Current Mens Handball Team of the Bannari Amman Intitute who positioned the 4th Position among the top 25 in COIMBATORE,TIRUPUR,ERODE,NILGIRIES districts-CENTIES 2025 at Erode Sengunthar Engineering College ')" />
+  <img src="3.jpg" alt="Achievement 3" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('3.jpg', 'Participated in the BIT Summer Camp 2024 and honored as the Best Camper along with the Trophy 🏆 as a result of showcasing the Discipline,Punctuality,Sportsmanship,Leadership')" />
+  <img src="4.jpg" alt="Achievement 4" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('4.jpg', 'Fought every point like a warrior – Intercollege BIT Sports Fest Tournament 2023 🔥, where each year students fight for their team to bang the top two position in the college')" />
+  <img src="5.jpg" alt="Achievement 5" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('5.jpg', 'Represented my college in the Zone-12 Mens Handball Tournament 2024 – Unmatched energy on the court! 🏃‍♂️💥')" />
+  <img src="6.jpg" alt="Achievement 6" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('6.jpg', 'Positioned 2nd place in the Anna University ZONE 12 Handball Tournament 2023')" />
+  <img src="7.jpg" alt="Achievement 7" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('7.jpg', 'Selected as the GOALKEEPER of the ERODE district to represent the Erode team in the CHIEF MINISTER TROPHY 2024 at the NIT Sports Complex, Trichy')" />
+  <img src="8.jpg" alt="Achievement 8" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('8.jpg', 'selected as the Finalist for the PANIMALAR HACKATHON 2024 held on 27th Jan,2024 at the Panimalar Engineering College , Chennai')" />
+  <img src="9.png" alt="Achievement 9" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('9.png', 'this is the picture which was taken by the news Dhinamalar photographer at the CHIEF MINISTER TROPHY 2024,   when i was playing a neck to neck match with the Salem team')" />
+  <img src="10.jpg" alt="Achievement 10" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('10.jpg', 'This was memoy that I had My first ever Experience and Match in the indoor Handball Court of NIT Sports Complex, Trichy ')" />
+  <img src="15.jpg" alt="Achievement 11" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('15.jpg', 'Selected for the Under 19 State Championship – Erode Team as  a GOALKEEPER to play in the state match held at GOVERNMENT LAW COLLEGE, Veerapandi , Theni, 2024')" />
+  <img src="11.jpg" alt="Achievement 12" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('11.jpg', 'Selected for the Senior State Mens Handball Championship held at GOVERNMENT HIGHER SECONDARY SCHOOL, Mettur,Salem 2024')" />
+  <img src="12.jpg" alt="Achievement 13" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('12.jpg', 'Participated in the Inter- District Handball Championship 2024 organized by the Erode District Handball Association at the Hindusthan College of Arts and Science, Erode')" />
+  <img src="13.png" alt="Achievement 14" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('13.png', 'The proud moment as a Team Caption to introduce BIT Mens Handball Team in the Team Recognition to the Head of the Physical Education Department of the Erode Sengunthar Engineering College')" />
+  <img src="1.jpg" alt="Achievement 15" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('1.jpg', 'Special appreciation Award in the BIT Summer Camp ,2023 to Honor my Sportsmanship and Dedication')" />
+  <img src="14.jpg" alt="Achievement 16" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('14.jpg', 'Participated in the Erode district Athletic Meet, 2024 held at VOC Athletic Field & Sports Complex , Erode')" />
+  <img src="16.jpg" alt="Achievement 17" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('16.jpg', 'Took part in the BIT, Marathon 2024 and completed in the 21 kilometer of distence in just  1hr 47mins and finished the race in the 7th position among 87 participants')" />
+  <img src="17.png" alt="Achievement 18" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('17.png', 'This is the moment when our Erode Mens Handball team distributed the team jersey in the State Championship, Mettur, Salem')" />
+  <img src="18.jpg" alt="Achievement 19" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('18.jpg', 'This certificate is the proof of the participation in the CENTIES - 2023 and banging 4th position among 18 teams , held KPR Engineering College, Coimbatore')" />
+  <img src="19.jpg" alt="Achievement 20" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('19.jpg', 'This image remembers the moment of entering the Sports Development Authority of TamilNadu(SDAT), Trichi')" />
+  <img src="20.jpg" alt="Achievement 21" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('20.jpg', 'This was the moment I entered into the NIT Sports Complex, Trichy to take part in the CHIEF MINISTER TROPHY 2024')" />
+  <img src="21.jpg" alt="Achievement 22" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('21.jpg', 'This moment is when I attended the Junior National Championship and got selected for the team, held at Kongu College of arts and science , Erode')" />
+  <img src="22.jpg" alt="Achievement 23" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('22.jpg', 'The First Trophy for me and my team under My Captaincy in  the Anna University Mens Handball Zonal Tournament-2024')" />
+  <img src="cup.jpg" alt="Achievement 1" class="w-40 h-28 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('cup.jpg', 'Teamwork made the dream work- Fought among 21 teams of COIMBATORE, ERODE, TIRUPUR, NILGIRIES and banged 4th position in the CENTIES Mens Handball Chanpionship - 2025')" />
+  <img src="2.jpg" alt="Achievement 2" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('2.jpg', 'Proud to show you the Current Mens Handball Team of the Bannari Amman Intitute who positioned the 4th Position among the top 25 in COIMBATORE,TIRUPUR,ERODE,NILGIRIES districts-CENTIES 2025 at Erode Sengunthar Engineering College ')" />
+  <img src="3.jpg" alt="Achievement 3" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('3.jpg', 'Participated in the BIT Summer Camp 2024 and honored as the Best Camper along with the Trophy 🏆 as a result of showcasing the Discipline,Punctuality,Sportsmanship,Leadership')" />
+  <img src="4.jpg" alt="Achievement 4" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('4.jpg', 'Fought every point like a warrior – Intercollege BIT Sports Fest Tournament 2023 🔥, where each year students fight for their team to bang the top two position in the college')" />
+  <img src="5.jpg" alt="Achievement 5" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('5.jpg', 'Represented my college in the Zone-12 Mens Handball Tournament 2024 – Unmatched energy on the court! 🏃‍♂️💥')" />
+  <img src="6.jpg" alt="Achievement 6" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('6.jpg', 'Positioned 2nd place in the Anna University ZONE 12 Handball Tournament 2023')" />
+  <img src="7.jpg" alt="Achievement 7" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('7.jpg', 'Selected as the GOALKEEPER of the ERODE district to represent the Erode team in the CHIEF MINISTER TROPHY 2024 at the NIT Sports Complex, Trichy')" />
+  <img src="8.jpg" alt="Achievement 8" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('8.jpg', 'selected as the Finalist for the PANIMALAR HACKATHON 2024 held on 27th Jan,2024 at the Panimalar Engineering College , Chennai')" />
+  <img src="9.png" alt="Achievement 9" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('9.png', 'this is the picture which was taken by the news Dhinamalar photographer at the CHIEF MINISTER TROPHY 2024,   when i was playing a neck to neck match with the Salem team')" />
+  <img src="10.jpg" alt="Achievement 10" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('10.jpg', 'This was memoy that I had My first ever Experience and Match in the indoor Handball Court of NIT Sports Complex, Trichy ')" />
+  <img src="15.jpg" alt="Achievement 11" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('15.jpg', 'Selected for the Under 19 State Championship – Erode Team as  a GOALKEEPER to play in the state match held at GOVERNMENT LAW COLLEGE, Veerapandi , Theni, 2024')" />
+  <img src="11.jpg" alt="Achievement 12" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('11.jpg', 'Selected for the Senior State Mens Handball Championship held at GOVERNMENT HIGHER SECONDARY SCHOOL, Mettur,Salem 2024')" />
+  <img src="12.jpg" alt="Achievement 13" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('12.jpg', 'Participated in the Inter- District Handball Championship 2024 organized by the Erode District Handball Association at the Hindusthan College of Arts and Science, Erode')" />
+  <img src="13.png" alt="Achievement 14" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('13.png', 'The proud moment as a Team Caption to introduce BIT Mens Handball Team in the Team Recognition to the Head of the Physical Education Department of the Erode Sengunthar Engineering College')" />
+  <img src="1.jpg" alt="Achievement 15" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('1.jpg', 'Special appreciation Award in the BIT Summer Camp ,2023 to Honor my Sportsmanship and Dedication')" />
+  <img src="14.jpg" alt="Achievement 16" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('14.jpg', 'Participated in the Erode district Athletic Meet, 2024 held at VOC Athletic Field & Sports Complex , Erode')" />
+  <img src="16.jpg" alt="Achievement 17" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('16.jpg', 'Took part in the BIT, Marathon 2024 and completed in the 21 kilometer of distence in just  1hr 47mins and finished the race in the 7th position among 87 participants')" />
+  <img src="17.png" alt="Achievement 18" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('17.png', 'This is the moment when our Erode Mens Handball team distributed the team jersey in the State Championship, Mettur, Salem')" />
+  <img src="18.jpg" alt="Achievement 19" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('18.jpg', 'This certificate is the proof of the participation in the CENTIES - 2023 and banging 4th position among 18 teams , held KPR Engineering College, Coimbatore')" />
+  <img src="19.jpg" alt="Achievement 20" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('19.jpg', 'This image remembers the moment of entering the Sports Development Authority of TamilNadu(SDAT), Trichi')" />
+  <img src="20.jpg" alt="Achievement 21" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('20.jpg', 'This was the moment I entered into the NIT Sports Complex, Trichy to take part in the CHIEF MINISTER TROPHY 2024')" />
+  <img src="21.jpg" alt="Achievement 22" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('21.jpg', 'This moment is when I attended the Junior National Championship and got selected for the team, held at Kongu College of arts and science , Erode')" />
+  <img src="22.jpg" alt="Achievement 23" class="w-40 h-32 object-cover rounded-lg shadow-lg cursor-pointer"
+       onclick="openImageModal('22.jpg', 'The First Trophy for me and my team under My Captaincy in  the Anna University Mens Handball Zonal Tournament-2024')" />
+      </div> 
+     </div>
+    </div>
+  </div>
+<style>
+ .animate-vert-loop {
+    animation: verticalLoop 25s linear infinite;
+  }
+
+  @keyframes verticalLoop {
+    0% {
+      transform: translateY(0%);
+    }
+    7% {
+      transform: translateY(0%);
+    }
+    100% {
+      transform: translateY(-50%);
+    }
+  }
+
+  .overflow-hidden::-webkit-scrollbar {
+    display: none;
+  }
+  .overflow-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-20 px-6 max-w-7xl mx-auto">
+  <h2 class="text-4xl font-bold text-indigo-300 text-center mb-10" data-aos="fade-up">Contact Me ☎️</h2>
+
+  <div class="flex flex-col lg:flex-row justify-between gap-10">
+
+    <!-- Glass Form with Background -->
+    <div class="w-full lg:w-1/2 relative rounded-2xl overflow-hidden">
+      <!-- Background Image -->
+      <div class="absolute inset-0 bg-[url('101.jpg')] bg-cover bg-center z-0"></div>
+      <!-- Overlay Blur and Tint -->
+      <div class="absolute inset-0 bg-black/40 backdrop-blur-md z-0"></div>
+
+      <!-- Actual Form -->
+      <form 
+        action="https://formsubmit.co/pragathes1414@gmail.com" 
+        method="POST"
+        class="relative z-10 text-white p-6 space-y-5"
+      >
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="box">
+        <input type="hidden" name="_next" value="https://yourwebsite.com/thanks.html">
+
+        <div>
+          <label for="name" class="block text-sm text-indigo-200 mb-1">Your Name</label>
+          <input type="text" name="name" required placeholder="Enter your name"
+                 class="w-full p-3 rounded-md bg-white/20 text-white placeholder-gray-300 outline-none focus:ring-2 focus:ring-indigo-400" />
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm text-indigo-200 mb-1">Your Email</label>
+          <input type="email" name="email" required placeholder="Enter your email"
+                 class="w-full p-3 rounded-md bg-white/20 text-white placeholder-gray-300 outline-none focus:ring-2 focus:ring-indigo-400" />
+        </div>
+
+        <div>
+          <label for="message" class="block text-sm text-indigo-200 mb-1">Your Message</label>
+          <textarea name="message" rows="4" required placeholder="What's on your mind?"
+                    class="w-full p-3 rounded-md bg-white/20 text-white placeholder-gray-300 outline-none focus:ring-2 focus:ring-indigo-400"></textarea>
+        </div>
+
+        <button type="submit"
+                class="w-full py-2 bg-indigo-500 hover:bg-indigo-600 rounded-lg font-semibold transition-all duration-300 shadow-md">
+          Send Message ✉️
+        </button>
+      </form>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="text-indigo-200 w-full lg:w-1/2 space-y-5 mt-10 lg:mt-0">
+      <p class="text-gray-300">Reach out for opportunities, collabs, or just a chat:</p>
+
+      <a href="mailto:pragathes1414@gmail.com" class="hover:underline flex items-center">📧 <span class="ml-2">pragathes1414@gmail.com</span></a>
+      <a href="mailto:pragatheswaran.bm22@bitsathy.ac.in" class="hover:underline flex items-center">📧 <span class="ml-2">pragatheswaran.bm22@bitsathy.ac.in</span></a>
+      <a href="tel:+919080528830" class="hover:underline flex items-center">📞 <span class="ml-2">+91 9080528830</span></a>
+      <a href="https://github.com/Pragathes14" target="_blank" class="hover:underline flex items-center">🐙 <span class="ml-2">Git@pragz</span></a>
+      <a href="https://www.linkedin.com/in/mpragz/" target="_blank" class="hover:underline flex items-center">💼 <span class="ml-2">in@pragz</span></a>
+      <a href="https://www.instagram.com/xwx._pragz/" target="_blank" class="hover:underline flex items-center">📷 <span class="ml-2">Instagram</span></a>
+      <a href="https://wa.me/919080528830" target="_blank" class="hover:underline flex items-center">💬 <span class="ml-2">WhatsApp</span></a>
+    </div>
+  </div>
+</section>
+
+
+<!-- Success Modal with Animation -->
+<div id="successModal" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-[9999]">
+  <div id="popupBox"
+    class="backdrop-blur-xl bg-white/10 border border-white/30 text-white text-center px-8 py-6 rounded-xl shadow-2xl max-w-sm w-full transform scale-90 opacity-0 transition-all duration-500">
+
+    <!-- Success Icon -->
+    <div class="flex justify-center mb-4">
+      <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center animate-bounce shadow-lg">
+        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" stroke-width="3"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+    </div>
+
+    <h2 class="text-2xl font-bold text-green-400 mb-2">Message Sent 👍🏻!</h2>
+    <p class="text-gray-100">Thanks for reaching out! I’ll get back to you shortly. 👋🏻</p>
+
+    <button onclick="closeSuccessModal()"
+      class="mt-5 px-4 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 transition-all">
+      Close
+    </button>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById("contactForm");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault(); // prevent page reload
+
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/pragathes1414@gmail.com", {
+        method: "POST",
+        headers: { 'Accept': 'application/json' },
+        body: formData
+      });
+
+      if (res.ok) {
+        form.reset(); // clear form
+
+        // Show popup
+        const modal = document.getElementById("successModal");
+        const popup = document.getElementById("popupBox");
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+
+        // Animate popup
+        setTimeout(() => {
+          popup.classList.remove("scale-90", "opacity-0");
+          popup.classList.add("scale-100", "opacity-100");
+        }, 50);
+      } else {
+        alert("Something went wrong. Try again.");
+      }
+
+    } catch (err) {
+      console.error("Error:", err);
+      alert("Failed to send. Please try again later.");
+    }
+  });
+
+  function closeSuccessModal() {
+    const modal = document.getElementById("successModal");
+    const popup = document.getElementById("popupBox");
+
+    popup.classList.remove("scale-100", "opacity-100");
+    popup.classList.add("scale-90", "opacity-0");
+
+    setTimeout(() => {
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }, 300);
+  }
+</script>
+
+
+<!-- Footer -->
+<footer class="py-6 text-center bg-purple-700 bg-opacity-20 text-sm text-white mt-16 select-none">
+  &copy; 🤍🤍🤍  2025 Pragatheswaran M. All rights reserved. Thanks for visiting !  🤍🤍🤍
+</footer>
+
+<!-- AOS Animation Scripts -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({ duration: 800, once: true });</script>
+<script>
+  window.addEventListener('scroll', () => {
+    const scrollBar = document.getElementById('scroll-bar');
+    const scrollTop = window.scrollY;
+    const docHeight = document.body.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    scrollBar.style.width = `${scrollPercent}%`;
+  });
+</script>
+<!-- Lightbox Modal -->
+<div id="lightbox" class="fixed inset-0 bg-black bg-opacity-80 hidden justify-center items-center z-50">
+  <span class="absolute top-4 right-6 text-white text-3xl cursor-pointer" onclick="closeLightbox()">&times;</span>
+  <img id="lightbox-img" class="max-w-full max-h-[90vh] rounded-lg border-4 border-white shadow-lg" />
+</div>
+
+<script>
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.remove('hidden');
+    document.getElementById('lightbox').classList.add('flex');
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('flex');
+    document.getElementById('lightbox').classList.add('hidden');
+  }
+</script>
+<!-- Image Modal -->
+<div id="imageModal" class="fixed inset-0 z-[9999] bg-black bg-opacity-80 hidden flex items-center justify-center px-4">
+  
+  <!-- Outer Close Button "X" -->
+  <button onclick="closeModal()"
+    class="absolute top-6 right-6 text-white text-4xl font-bold hover:text-red-500 transition-all duration-300 z-50">
+    &times;
+  </button>
+
+  <!-- Centered Modal Box -->
+  <div class="rounded-lg shadow-2xl max-w-5xl w-full mx-auto flex flex-col md:flex-row items-center justify-center 
+              backdrop-blur-lg bg-white bg-opacity-10 border border-white/20">
+
+    <!-- Image Section -->
+    <div class="w-full md:w-1/2 flex items-center justify-center p-4">
+      <img id="modalImage" src="" alt="Preview" class="object-contain max-h-[70vh] w-full rounded" />
+    </div>
+
+    <!-- Description Section -->
+    <div class="w-full md:w-1/2 p-6 text-white overflow-y-auto max-h-[70vh]">
+      <h2 class="text-2xl font-bold mb-2">Image Description</h2>
+      <p id="modalDesc" class="text-base leading-relaxed text-white/90"></p>
+    </div>
+
+  </div>
+</div>
+
+
+
+<script>
+  function openImageModal(src, desc) {
+    document.getElementById("modalImage").src = src;
+    document.getElementById("modalDesc").innerText = desc;
+    document.getElementById("imageModal").classList.remove("hidden");
+  }
+
+  function closeModal() {
+    document.getElementById("imageModal").classList.add("hidden");
+  }
+</script>
+</body>
+</html>  
+
